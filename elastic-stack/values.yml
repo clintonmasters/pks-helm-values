@@ -1,0 +1,7 @@
+kibana:
+  env:
+    ELASTICSEARCH_URL: http://elastic-stack-elasticsearch-client.default.svc.cluster.local:9200
+
+logstash:
+  elasticsearch:
+    host: elastic-stack-elasticsearch-client
