@@ -5,3 +5,24 @@ kibana:
 logstash:
   elasticsearch:
     host: elastic-stack-elasticsearch-client
+  service:
+    type: ClusterIP
+    ports:
+      syslog-tcp:
+        port: 1514
+        targetPort: syslog-tcp
+        protocol: TCP
+  ports:
+    - name: syslog-tcp
+      containerPort: 1514
+      protocol: TCP
+      
+  inputs:
+    main: |-
+      input {
+        tcp {
+          port => 1514
+          type => syslog
+        }
+      }
+
